@@ -1,0 +1,2 @@
+
+# inceput lucru la proiect
