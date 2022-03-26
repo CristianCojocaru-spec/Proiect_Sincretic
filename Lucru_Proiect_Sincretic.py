@@ -4,6 +4,7 @@
 
 
 from dataclasses import dataclass
+from math import radians
 
 
 @dataclass
@@ -38,10 +39,24 @@ def __inserare_nod__(radacina,cheie):
 def __inordine__(radacina):
     if radacina:
         __inordine__(radacina.stanga)
-        print(radacina.cheie)
+        print(radacina.cheie,end=" ")
         __inordine__(radacina.dreapta)  
         
-    
+
+# functie pentru parcurgere in postordine
+def __postordine__(radacina):
+    if radacina:
+        __postordine__(radacina.stanga)
+        __postordine__(radacina.dreapta)
+        print(radacina.cheie, end=" ")
+        
+#functie pentru parcurgere in preordine
+
+def __preordine__(radacina):
+    if radacina:
+        print(radacina.cheie, end=" ")
+        __preordine__(radacina.stanga)
+        __preordine__(radacina.dreapta)
         
    
 def main():
@@ -54,10 +69,18 @@ def main():
     for i in range(0,len(vector_noduri)):
          radacina = __inserare_nod__(radacina,vector_noduri[i])
     
-    print("Afisare in inordine:\n")
+    print("\nAfisare in inordine: ") 
     
     
     __inordine__(radacina)
+    
+    print("\n\nAfisare in postordine: ")
+    __postordine__(radacina)
+    
+    print("\n\nAfisare in preordine: ")
+    __preordine__(radacina)
+    
+    print()
     
     
      
