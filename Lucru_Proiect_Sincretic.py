@@ -81,12 +81,13 @@ class arbore:
                 
         return     
                 
-            
+ # functie pentru citirea nodurilor din fisier           
 def read_fromFile(file_name, nodes_buffer=[]):
     with open(file_name) as f:
         for i in f:
             nodes_buffer.append((int)(i.strip('\n')))
-    
+
+# functie de tip meniu pentru ca utilizatorul sa aleaga din mai multe optiuni    
 def MENIU():
     print("\n----------------------------------")
     print("1.Adaugare noduri din fisier")
