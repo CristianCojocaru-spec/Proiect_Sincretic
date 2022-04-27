@@ -1,8 +1,6 @@
 
 
-# inceput lucru la proiect
-
-
+# Proiect sincretic 
 
 from dataclasses import dataclass
 from msilib.schema import File
