@@ -61,7 +61,7 @@ class arbore:
         if radacina==None:
             return
 
-        # 
+         
         queue=[]
         queue.append(radacina)
         queue.append(None)
