@@ -4,6 +4,7 @@
 
 from dataclasses import dataclass
 from msilib.schema import File
+import random
 
 @dataclass
 # structura unui nod din arbore
@@ -35,7 +36,7 @@ class arbore:
     def __inordine__(self,radacina):
         if radacina:
             self.__inordine__(radacina.stanga)
-            print(radacina.cheie,end=" ")
+            print(radacina.cheie,end="  ")
             self.__inordine__(radacina.dreapta)
 
 
@@ -44,13 +45,13 @@ class arbore:
         if radacina:
             self.__postordine__(radacina.stanga)
             self.__postordine__(radacina.dreapta)
-            print(radacina.cheie, end=" ")
+            print(radacina.cheie,end="  ")
 
     
     # functie pentru parcurgere in preordine
     def __preordine__(self,radacina):
         if radacina:
-            print(radacina.cheie, end=" ")
+            print(radacina.cheie,end="  ")
             self.__preordine__(radacina.stanga)
             self.__preordine__(radacina.dreapta)
      
@@ -80,14 +81,21 @@ class arbore:
                 queue.append(None)  # semnalam inceputul nivelului urmator
                 
         return     
-                
- # functie pentru citirea nodurilor din fisier           
-def read_fromFile(file_name, nodes_buffer=[]):
-    with open(file_name) as f:
-        for i in f:
-            nodes_buffer.append((int)(i.strip('\n')))
 
-# functie de tip meniu pentru ca utilizatorul sa aleaga din mai multe optiuni    
+
+# functie care genereaza numere random, aceste numere vor fi nodurile din arbore           
+def generate_random_numbers( nodes_buffer=[]):
+    
+    nodes_number=10               # variabila in care stocam nr de noduri din arbore
+    i=0
+    while i<nodes_number:
+        nr=random.randint(0,369)     # generare numere din intervalul [0:10]
+        nodes_buffer.append(nr)
+        i=i+1
+
+
+
+# functie de tip meniu pentru ca utilizatorul sa aleaga din optiunile prezentate   
 def MENIU():
     print("\n----------------------------------")
     print("1.Adaugare noduri din fisier")
@@ -96,23 +104,23 @@ def MENIU():
     print("4.Afisare parcurgere in postordine")
     print("5.Afisare parcurgere pe nivel")
     print("6.Iesire din program")
-
     print("\n----------------------------------")    
         
 
 
 def main():
 
-    
-    while(1):
+     while(1):
+
         MENIU()
-        opt=int(input("Alegeti optiunea dorita:"))
-        if opt==1:
+
+        opt=(input("Alegeti optiunea dorita: "))
+
+        if opt=='1':
             radacina=None
             nodes_buffer=[]
         
-        
-            read_fromFile("input_nodes.txt",nodes_buffer) 
+            generate_random_numbers(nodes_buffer) 
             print("\n---Nodurile sunt:---")
             print(nodes_buffer)
             arbore1 = arbore()
@@ -120,26 +128,27 @@ def main():
             for i in nodes_buffer:
                 radacina=arbore1.inserare_nod(radacina,i)
             
-            
-        elif opt==2:
-            print("\nAfisare in inordine: ",end=" ")
+        elif opt=='2':
+            print("\nAfisare in inordine: ",end="  ")
             arbore1.__inordine__(radacina)
-        elif opt==3:
-            print("\nAfisare in preordine: ",end=" ")
+        elif opt=='3':
+            print("\nAfisare in preordine: ",end="  ")
             arbore1.__preordine__(radacina)
 
-        elif opt==4:
-            print("\nAfisare in postordine: ",end=" ")
+        elif opt=='4':
+            print("\nAfisare in postordine: ",end="  ")
             arbore1.__postordine__(radacina)
 
-        elif opt==5:
+        elif opt=='5':
             print("\n---Afisare pe nivel:--- ")
             print()
             print("Nivel 0:",end=" ")
             arbore1.traversare_nivel(radacina)
 
-        elif opt==6:
+        elif opt=='6':
             return
+        else:
+            print("\nOptiune gresita!\nAlegeti o valoare intre 1 si 6")
             
     
 # Code execution starts here
