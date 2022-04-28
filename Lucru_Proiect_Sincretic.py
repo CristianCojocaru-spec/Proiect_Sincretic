@@ -123,6 +123,7 @@ def main():
             generate_random_numbers(nodes_buffer) 
             print("\n---Nodurile sunt:---")
             print(nodes_buffer)
+            
             arbore1 = arbore()
 
             for i in nodes_buffer:
