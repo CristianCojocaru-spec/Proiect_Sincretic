@@ -80,16 +80,16 @@ class arbore:
                 i=i+1
                 queue.append(None)  # semnalam inceputul nivelului urmator
                 
-        return     
+             
 
 
 # functie care genereaza numere random, aceste numere vor fi nodurile din arbore           
 def generate_random_numbers( nodes_buffer=[]):
     
-    nodes_number=10               # variabila in care stocam nr de noduri din arbore
+    nodes_number=50              # variabila in care stocam nr de noduri din arbore
     i=0
     while i<nodes_number:
-        nr=random.randint(0,369)     # generare numere din intervalul [0:10]
+        nr=random.randint(0,10)     # generare numere din intervalul [0:10]
         nodes_buffer.append(nr)
         i=i+1
 
@@ -123,7 +123,7 @@ def main():
             generate_random_numbers(nodes_buffer) 
             print("\n---Nodurile sunt:---")
             print(nodes_buffer)
-            
+
             arbore1 = arbore()
 
             for i in nodes_buffer:
